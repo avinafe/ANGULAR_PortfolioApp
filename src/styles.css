@@ -1,12 +1,25 @@
-@charset "UTF-8";
+/* SVG Animation */
 
-/*!
- * animate.css -http://daneden.me/animate
- * Version - 3.7.0
- * Licensed under the MIT license - http://opensource.org/licenses/MIT
- *
- * Copyright (c) 2018 Daniel Eden
- */
+.loader-wrapper{
+  padding: 1em;
+  background: white;
+  color: #777;
+  text-align: center;
+  font-family: "Gill sans", sans-serif;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*
+  Color del Loading
+*/
+svg path,
+svg rect{
+  fill: black;
+}
+
+
+/* animate.css */
 
 @-webkit-keyframes fadeIn {
   from {

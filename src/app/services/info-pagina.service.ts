@@ -8,19 +8,35 @@ import { IInfoPagina } from '../interfaces/info-pagina-interface';
 export class InfoPaginaService {
 
   info: IInfoPagina = {};
-  cargada = false;
+  equipo: any[] = [];
+  cargando = true;
 
   constructor( private http: HttpClient ) {
-    // console.log('Servicio OK');
 
+    this.cargarInfo();
+    this.cargarEquipo();
+
+  }
+
+  private cargarInfo() {
     this.http.get('assets/data/data-pagina.json')
-              .subscribe( (resp: IInfoPagina) => {
+    .subscribe( (resp: IInfoPagina) => {
 
-                this.cargada = true;
-                this.info = resp;
-                console.log(resp);
+      this.info = resp;
+      this.cargando = false;
+      // console.log(resp);
 
-              });
+    });
+  }
 
+  private cargarEquipo() {
+    this.http.get('https://portafolio-c7184.firebaseio.com/equipo.json')
+    .subscribe( (resp: any[]) => {
+
+      this.cargada = true;
+      this.equipo = resp;
+      console.log(resp);
+
+    });
   }
 }
